@@ -4,17 +4,21 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
+QT       += core gui network
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = StarMovieCollection
 TEMPLATE = app
 
-
 SOURCES += main.cpp\
-        mainwindow.cpp
+        mainwindow.cpp \
+    tmdbapi.cpp \
+    persistentcache.cpp
 
-HEADERS  += mainwindow.h
+
+HEADERS  += mainwindow.h \
+    tmdbapi.h \
+    persistentcache.h
 
 FORMS    += mainwindow.ui
