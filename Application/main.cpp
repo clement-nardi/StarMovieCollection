@@ -9,7 +9,7 @@ int main(int argc, char *argv[])
     qDebug() << "Hello World!!";
 
 
-    //MainWindow w;
-    //w.show();
-    //return a.exec();
+    MainWindow w;
+    w.show();
+    return a.exec();
 }

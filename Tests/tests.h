@@ -9,8 +9,11 @@ class Tests : public QObject
     Q_OBJECT
 private slots:
 
-    void TMDBSearch();
-    void TMDBMovie();
+    void testTMDBSearch();
+    void testTMDBMovie();
+
+    void testIsMoviefile();
+    void testExtractTitle();
 
 };
 

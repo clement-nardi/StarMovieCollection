@@ -1,0 +1,56 @@
+{
+    "sep": "[ .\\-_]",
+    "sectionSeparator":[
+        "[\\(\\)\\[\\]\\{\\}]",
+        "[\\-=:!]{2,}"
+    ],
+    "year":"(19|20|21)[0-9]{2}",
+    "episodeNumber":[
+        "(s|season|saison)%sep*[0-9]{1,2}%sep*(e|ep|episode)%sep*[0-9]{1,2}",
+        "%sep[0-9]{1,2}x[0-9]{1,2}%sep",
+        "%sep[1-9](0[1-9]|[1-2][0-9])%sep"
+    ],
+    "wordFollowedByName":[
+        "de",
+        "with",
+        "avec",
+        "by",
+        "con"
+    ],
+    "nonWord":[
+        "%year",
+        "%episodeNumber",
+        "blu-?ray",
+        "1080p",
+        "720p",
+        "[hx]264",
+        "divx",
+        "xvid",
+        "truefrench",
+        "cine-pro",
+        "hd%sep{0,1}dvd",
+        "hd%sep{0,1}tv",
+        "%sepAAC(%sep|$)",
+        "%sepAC3(%sep|$)",
+        "%sepDTS(%sep|$)",
+        "%sepMP3(%sep|$)",
+        "(br|dvd|web)%sep{0,1}rip",
+        "%sephd(%sep|$)",
+        "%sep{2}(%wordFollowedByName|film|movie)"
+    ],
+
+    "likelyEndingWordNotPartOfTitle":[
+        "FRENCH",
+        "LIMITED",
+        "REMASTERED",
+        "EXTENDED"
+    ],
+    "subSectionSeparator":"%sep{3}",
+    "directorsAndActorsNames":{"listFromFile":"directorsAndActorsNames.txt"},
+    "likelyNonTitle":[
+        "%sep[a-z]\\.%sep*[a-z]",
+        "%directorsAndActorsNames"
+    ],
+    "endingSeparators":"%sep*$",
+    "castPreview":"%sep%wordFollowedByName%sep*%directorsAndActorsNames"
+}

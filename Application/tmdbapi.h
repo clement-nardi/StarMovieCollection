@@ -17,12 +17,13 @@ class TMDBQuery: public QObject {
     Q_OBJECT
 
 public:
-    static TMDBQuery * NewSearchQuery(QString keywords, int page = 1);
-    static TMDBQuery * NewMovieQuery(int movieID);
-    void Send();
+    static TMDBQuery * newSearchQuery(QString keywords, int page = 1);
+    static TMDBQuery * newMovieQuery(int movieID);
+    void send();
+    static float getCacheHitRatio();
 
 signals:
-    void Response(QJsonDocument);
+    void response(QJsonDocument);
 
 
 
@@ -35,11 +36,11 @@ private:
     QNetworkReply * reply;
     int page;
 
-    static PersistentCache *cache;
+    static PersistentCache cache;
 
 private slots:
 
-    void TreatResponse();
+    void treatResponse();
 
 };
 
