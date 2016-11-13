@@ -77,7 +77,7 @@ void Tests::testExtractTitle(){
     QStringList expectedTitles;
 
     while (!stream.atEnd()) {
-        QString path = stream.readLine();
+        QString path = "../../Tests/" + stream.readLine();
         QString title = stream.readLine();
         countTitles++;
         if (MovieFile(path).extractTitleFromFilename() == QString(title)) {

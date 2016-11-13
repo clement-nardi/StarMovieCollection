@@ -1,174 +1,174 @@
-W:/Videos/Séries/Fawlty Towers/Series 1/Fawlty.Towers.-.1x01.-.A.Touch.of.Class.avi
+fakeFileTree/Séries/Fawlty Towers/Series 1/Fawlty.Towers.-.1x01.-.A.Touch.of.Class.avi
 Fawlty.Towers
-W:/Videos/Films de Science-Fiction/2001.A.Space.Odyssey.1968.720p.HDDVD.x264-hV.mkv
+fakeFileTree/Films de Science-Fiction/2001.A.Space.Odyssey.1968.720p.HDDVD.x264-hV.mkv
 2001.A.Space.Odyssey
-W:/Videos/Films de Science-Fiction/2012.2009.720p.BluRay.x264.DTS-WiKi.mkv
+fakeFileTree/Films de Science-Fiction/2012.2009.720p.BluRay.x264.DTS-WiKi.mkv
 2012
-W:/Videos/Films de Science-Fiction/10.Cloverfield.Lane.2016.1080p.BluRay.H264.AAC-RARBG.mp4
+fakeFileTree/Films de Science-Fiction/10.Cloverfield.Lane.2016.1080p.BluRay.H264.AAC-RARBG.mp4
 10.Cloverfield.Lane
-W:/Videos/Films de Science-Fiction/Children.Of.Men.(Les.fils.de.l'homme).2006.Bluray.720p.x264.[DTS.ENG.-.AAC.FRE].[SUB.FRE.ENG].by.Olaf69.mkv
+fakeFileTree/Films de Science-Fiction/Children.Of.Men.(Les.fils.de.l'homme).2006.Bluray.720p.x264.[DTS.ENG.-.AAC.FRE].[SUB.FRE.ENG].by.Olaf69.mkv
 Children.Of.Men
-W:/Videos/Films de Science-Fiction/Armageddon.DvD.Rip.FR-French-Divx5.02-pass-2.by.Badgerkiller.[emule-island.com].avi
+fakeFileTree/Films de Science-Fiction/Armageddon.DvD.Rip.FR-French-Divx5.02-pass-2.by.Badgerkiller.[emule-island.com].avi
 Armageddon
-W:/Videos/Films de Science-Fiction/Iron.Man.2.HD.mkv
+fakeFileTree/Films de Science-Fiction/Iron.Man.2.HD.mkv
 Iron.Man.2
-W:/Videos/Films de Science-Fiction/Men.In.Black.1.DVDRip.[Rv10c.ehq.100+He-Aac{Fr-Eng-Ger}+Sub{Fr-Eng-Ger}+Chap+Covers].by.Lolent.mkv
+fakeFileTree/Films de Science-Fiction/Men.In.Black.1.DVDRip.[Rv10c.ehq.100+He-Aac{Fr-Eng-Ger}+Sub{Fr-Eng-Ger}+Chap+Covers].by.Lolent.mkv
 Men.In.Black.1
-W:/Videos/Films de Science-Fiction/Next..Divx.720p..GAÏA.avi
+fakeFileTree/Films de Science-Fiction/Next..Divx.720p..GAÏA.avi
 Next
-W:/Videos/Films de Science-Fiction/Terminator.2..Judgment.Day.-.de.James.Cameron.avec.Arnold.Schwarzenegger.(fr-en).mkv
+fakeFileTree/Films de Science-Fiction/Terminator.2..Judgment.Day.-.de.James.Cameron.avec.Arnold.Schwarzenegger.(fr-en).mkv
 Terminator.2..Judgment.Day
-W:/Videos/Films de Science-Fiction/Transformers.HD.DVD.RE.720.X264.DD51.F@Silu.mkv
+fakeFileTree/Films de Science-Fiction/Transformers.HD.DVD.RE.720.X264.DD51.F@Silu.mkv
 Transformers
-W:/Videos/Films Français/Quatre.garçons.pleins.d'avenir.-.Film.(Fr,.DivX).avi
+fakeFileTree/Films Français/Quatre.garçons.pleins.d'avenir.-.Film.(Fr,.DivX).avi
 Quatre.garçons.pleins.d'avenir
-W:/Videos/Films Français/Prete.Moi.Ta.Main.FRENCH.DVDRIP.XviD.AC3-TFTD.avi
+fakeFileTree/Films Français/Prete.Moi.Ta.Main.FRENCH.DVDRIP.XviD.AC3-TFTD.avi
 Prete.Moi.Ta.Main
-W:/Videos/Films Français/Neuf.mois.-.Patrick.Braoudé,.Philippine.Leroy-Beaulieu,.Catherine.Jacob.-.1h43.avi
+fakeFileTree/Films Français/Neuf.mois.-.Patrick.Braoudé,.Philippine.Leroy-Beaulieu,.Catherine.Jacob.-.1h43.avi
 Neuf.mois
-W:/Videos/Films Français/La.Tour.Montparnasse.Infernale.Cine-Pro.New.Fr.avi
+fakeFileTree/Films Français/La.Tour.Montparnasse.Infernale.Cine-Pro.New.Fr.avi
 La.Tour.Montparnasse.Infernale
-W:/Videos/Films Français/L'Autre.-.Patrick.Mario.Bernard,.Pierre.Trividic.avec.Dominique.Blanc,.Cyril.Gueï,.Peter.Bonke.Dvdrip.Xvid-Unskilled.By.Hadopix.avi
+fakeFileTree/Films Français/L'Autre.-.Patrick.Mario.Bernard,.Pierre.Trividic.avec.Dominique.Blanc,.Cyril.Gueï,.Peter.Bonke.Dvdrip.Xvid-Unskilled.By.Hadopix.avi
 L'Autre
-W:/Videos/Films Français/Enfants.De.Salaud.-.Jean.Yanne,Anemone,.N.Baye(1996).avi
+fakeFileTree/Films Français/Enfants.De.Salaud.-.Jean.Yanne,Anemone,.N.Baye(1996).avi
 Enfants.De.Salaud
-W:/Videos/Films Français/Asterix.&.Obelix.-.Mission.Cleopatre.Dvdrip.{Rv10.Ogg}{Fr-Com}{Sub.Fr-Eng-Dut}{Chap.&.Covers}.mkv
+fakeFileTree/Films Français/Asterix.&.Obelix.-.Mission.Cleopatre.Dvdrip.{Rv10.Ogg}{Fr-Com}{Sub.Fr-Eng-Dut}{Chap.&.Covers}.mkv
 Asterix.&.Obelix.-.Mission.Cleopatre
-W:/Videos/Films de Science-Fiction/Star.Wars.Episode.III.-.La.Revanche.Des.Sith.720P.avi
+fakeFileTree/Films de Science-Fiction/Star.Wars.Episode.III.-.La.Revanche.Des.Sith.720P.avi
 Star.Wars.Episode.III.-.La.Revanche.Des.Sith
-W:/Videos/Films de Science-Fiction/The.Hunger.Games.Mockingjay...Part.1.2014.1080p.BluRay.x264.YIFY.mp4
+fakeFileTree/Films de Science-Fiction/The.Hunger.Games.Mockingjay...Part.1.2014.1080p.BluRay.x264.YIFY.mp4
 The.Hunger.Games.Mockingjay...Part.1
-W:/Videos/Films de Science-Fiction/Transformers.Revenge.of.the.Fallen.AAC.mkv
+fakeFileTree/Films de Science-Fiction/Transformers.Revenge.of.the.Fallen.AAC.mkv
 Transformers.Revenge.of.the.Fallen
-W:/Videos/Films Américains/Arrete.moi.si.tu.peux.de.Steven.Spielberg.avec.Léonardo.di.Caprio-Tom.Hanks.[Fr-Eng.St.Fr.x264-Mp3.192].mkv
+fakeFileTree/Films Américains/Arrete.moi.si.tu.peux.de.Steven.Spielberg.avec.Léonardo.di.Caprio-Tom.Hanks.[Fr-Eng.St.Fr.x264-Mp3.192].mkv
 Arrete.moi.si.tu.peux
-W:/Videos/Films Américains/Apocalypse.Now.Redux.1979.BDRip.YIFY.mkv
+fakeFileTree/Films Américains/Apocalypse.Now.Redux.1979.BDRip.YIFY.mkv
 Apocalypse.Now.Redux
-W:/Videos/Films Américains/L'impossible.Monsieur.Bébé.De.Howard.Hawks.(Usa,.1938,.Vost.Fr,.Bringing.Up.Baby,.98').avi
+fakeFileTree/Films Américains/L'impossible.Monsieur.Bébé.De.Howard.Hawks.(Usa,.1938,.Vost.Fr,.Bringing.Up.Baby,.98').avi
 L'impossible.Monsieur.Bébé
-W:/Videos/Films Américains/L.A.Confidential.-=TnT=-.{VO-VF_ST(Fra-Eng)_Chap_Covers}{x264.Ogg}.mkv
+fakeFileTree/Films Américains/L.A.Confidential.-=TnT=-.{VO-VF_ST(Fra-Eng)_Chap_Covers}{x264.Ogg}.mkv
 L.A.Confidential
-W:/Videos/Films Américains/Lady.Windermere's.Fan.-.Ernst.Lubitsch.-.1925.avi
+fakeFileTree/Films Américains/Lady.Windermere's.Fan.-.Ernst.Lubitsch.-.1925.avi
 Lady.Windermere's.Fan
-W:/Videos/Films Américains/No.Man's.Land.-.260.Chrono.-.Xvid.Fr.-.Rip.By.Icy.par.AVI
+fakeFileTree/Films Américains/No.Man's.Land.-.260.Chrono.-.Xvid.Fr.-.Rip.By.Icy.par.AVI
 No.Man's.Land.-.260.Chrono
-W:/Videos/Films Américains/Pirates.des.Caraïbes.-.La.Malediction.du.Black.Pearl.(Pirates.of.the.Caribbean.-.The.Curse.Of.The.Black.Pearl).DVDRip.[x264.HP.He-Aac.{Fr-Eng}.St{Fr-Eng}.Chaps.Cover].mkv
+fakeFileTree/Films Américains/Pirates.des.Caraïbes.-.La.Malediction.du.Black.Pearl.(Pirates.of.the.Caribbean.-.The.Curse.Of.The.Black.Pearl).DVDRip.[x264.HP.He-Aac.{Fr-Eng}.St{Fr-Eng}.Chaps.Cover].mkv
 Pirates.des.Caraïbes.-.La.Malediction.du.Black.Pearl
-W:/Videos/Films Américains/The.Truman.Show.Blu-ray.RE.720.X264.dd51.MySilu.mkv
+fakeFileTree/Films Américains/The.Truman.Show.Blu-ray.RE.720.X264.dd51.MySilu.mkv
 The.Truman.Show
-W:/Videos/Films Américains/Wall.Street.REMASTERED.1987.1080p.BrRip.x264.YIFY.mp4
+fakeFileTree/Films Américains/Wall.Street.REMASTERED.1987.1080p.BrRip.x264.YIFY.mp4
 Wall.Street
-W:/Videos/Films Américains/Whatever.Works.LIMITED.720p.Bluray.x264-CBGB.mkv
+fakeFileTree/Films Américains/Whatever.Works.LIMITED.720p.Bluray.x264-CBGB.mkv
 Whatever.Works
-W:/Videos/Films Américains/James.Bond.007.Movie.Pack.720p.BluRay.DTS.x264-ArenaBG/007.01.Dr.No.1962.PROPER.720p.BluRay.x264-Japhson.mkv
+fakeFileTree/Films Américains/James.Bond.007.Movie.Pack.720p.BluRay.DTS.x264-ArenaBG/007.01.Dr.No.1962.PROPER.720p.BluRay.x264-Japhson.mkv
 Dr.No
-W:/Videos/Films Américains/James.Bond.007.Movie.Pack.720p.BluRay.DTS.x264-ArenaBG/007.22.Quantum.of.Solace.2008.720p.BluRay.x264-REFiNED.mkv
+fakeFileTree/Films Américains/James.Bond.007.Movie.Pack.720p.BluRay.DTS.x264-ArenaBG/007.22.Quantum.of.Solace.2008.720p.BluRay.x264-REFiNED.mkv
 Quantum.of.Solace
-W:/Videos/Films Américains/James.Bond.007.Movie.Pack.720p.BluRay.DTS.x264-ArenaBG/007.H1.Casino.Royale.1966.720p.BluRay.x264-CiNEFiLE.mkv
+fakeFileTree/Films Américains/James.Bond.007.Movie.Pack.720p.BluRay.DTS.x264-ArenaBG/007.H1.Casino.Royale.1966.720p.BluRay.x264-CiNEFiLE.mkv
 007.H1.Casino.Royale
-W:/Videos/Films d'autres nationalités/Rak.Ti.Khon.Kaen.aka.Cemetery.of.Splendour.Sonata.Premiere.avi
+fakeFileTree/Films d'autres nationalités/Rak.Ti.Khon.Kaen.aka.Cemetery.of.Splendour.Sonata.Premiere.avi
 Rak.Ti.Khon.Kaen
-W:/Videos/Films d'autres nationalités/Starbuck.French.1080p.BluRay.x264-ENjOi.mkv
+fakeFileTree/Films d'autres nationalités/Starbuck.French.1080p.BluRay.x264-ENjOi.mkv
 Starbuck
-W:/Videos/Films d'autres nationalités/Terry.Pratchett's.The.Colour.of.Magic.PT.1.KLAXXON.DVDRIP.avi
+fakeFileTree/Films d'autres nationalités/Terry.Pratchett's.The.Colour.of.Magic.PT.1.KLAXXON.DVDRIP.avi
 Terry.Pratchett's.The.Colour.of.Magic.PT.1
-W:/Videos/Films d'autres nationalités/The.Guard.LIMITED.DVDRip.XviD-DoNE.avi
+fakeFileTree/Films d'autres nationalités/The.Guard.LIMITED.DVDRip.XviD-DoNE.avi
 The.Guard
-W:/Videos/Films Documentaires/Blackfish.-.The.Whale.that.Killed.-.BBC.Storyville.-.x264.AC3.mkv
+fakeFileTree/Films Documentaires/Blackfish.-.The.Whale.that.Killed.-.BBC.Storyville.-.x264.AC3.mkv
 Blackfish.-.The.Whale.that.Killed
-W:/Videos/Films Documentaires/L'odyssée_de_la_vie_-_Nils_Tavernier.avi
+fakeFileTree/Films Documentaires/L'odyssée_de_la_vie_-_Nils_Tavernier.avi
 L'odyssée_de_la_vie
-W:/Videos/Films Japonais/Final.Fantasy.VII.-.Dirge.of.Cerberus.-.vostfr.avi
+fakeFileTree/Films Japonais/Final.Fantasy.VII.-.Dirge.of.Cerberus.-.vostfr.avi
 Final.Fantasy.VII.-.Dirge.of.Cerberus
-W:/Videos/Films pas encore vus/Capra.Franck.-.Arsenic.Et.Vieilles.Dentelles.-.Vost.Fr.avi
+fakeFileTree/Films pas encore vus/Capra.Franck.-.Arsenic.Et.Vieilles.Dentelles.-.Vost.Fr.avi
 Capra.Franck.-.Arsenic.Et.Vieilles.Dentelles
-W:/Videos/Films pas encore vus/the.taste.of.tea.2.de.2.-.stfr.avi
+fakeFileTree/Films pas encore vus/the.taste.of.tea.2.de.2.-.stfr.avi
 the.taste.of.tea
-W:/Videos/Films pas encore vus/the.taste.of.tea.cd1.stfr.avi
+fakeFileTree/Films pas encore vus/the.taste.of.tea.cd1.stfr.avi
 the.taste.of.tea
-W:/Videos/Films pour enfants/Bolt.BDrip.(x264.1080p)(English-AAC+sub).mkv
+fakeFileTree/Films pour enfants/Bolt.BDrip.(x264.1080p)(English-AAC+sub).mkv
 Bolt
-W:/Videos/Films pour enfants/Disney/N°.001.-.1937.Walt.Disney.-.Blanche.Neige.avi
+fakeFileTree/Films pour enfants/Disney/N°.001.-.1937.Walt.Disney.-.Blanche.Neige.avi
 Blanche.Neige
-W:/Videos/Films pour enfants/Disney/N°.038.-.1994.Walt.Disney.-.Le.Roi.Lion.(The.Lion.King).[original.version].1994.1080p.BluRay.x264.[DTS.ENG.FRE].[SUB.FRE.ENG.SPA.POR.DUT].by.Olaf69.mkv
+fakeFileTree/Films pour enfants/Disney/N°.038.-.1994.Walt.Disney.-.Le.Roi.Lion.(The.Lion.King).[original.version].1994.1080p.BluRay.x264.[DTS.ENG.FRE].[SUB.FRE.ENG.SPA.POR.DUT].by.Olaf69.mkv
 Le.Roi.Lion
-W:/Videos/Séries/[.www.CpasBien.cm.].Le.Bureau.Des.Legendes.S02E01.FRENCH.HDTV.XviD-ZT.avi
+fakeFileTree/Séries/[.www.CpasBien.cm.].Le.Bureau.Des.Legendes.S02E01.FRENCH.HDTV.XviD-ZT.avi
 Le.Bureau.Des.Legendes
-W:/Videos/Séries/Fais.pas.ci.fais.pas.ca.S02E01.Les.bonnes.manières.avi
+fakeFileTree/Séries/Fais.pas.ci.fais.pas.ca.S02E01.Les.bonnes.manières.avi
 Fais.pas.ci.fais.pas.ca
-W:/Videos/Séries/Fais.pas.ci.fais.pas.ca.S02E02.TVRIP.H264-Eva.avi
+fakeFileTree/Séries/Fais.pas.ci.fais.pas.ca.S02E02.TVRIP.H264-Eva.avi
 Fais.pas.ci.fais.pas.ca
-W:/Videos/Séries/Le.Bureau.Des.Legendes.S01E10.-.HS.mp4
+fakeFileTree/Séries/Le.Bureau.Des.Legendes.S01E10.-.HS.mp4
 Le.Bureau.Des.Legendes
-W:/Videos/Séries/Le.bureau.des.légendes.-.S01E01.-.VF.TVRIP.HD1080.AC3.5.1.mkv
+fakeFileTree/Séries/Le.bureau.des.légendes.-.S01E01.-.VF.TVRIP.HD1080.AC3.5.1.mkv
 Le.bureau.des.légendes
-W:/Videos/Séries/24/24 season 1/[XCT].24.heures.chrono.Saison.1.(Season.1).(DVDRip).Bonus.Fin.alternative.[x264HP.He-aac{eng}.Sub.mkv
+fakeFileTree/Séries/24/24 season 1/[XCT].24.heures.chrono.Saison.1.(Season.1).(DVDRip).Bonus.Fin.alternative.[x264HP.He-aac{eng}.Sub.mkv
 24
-W:/Videos/Séries/24/24 season 1/[XCT].24.heures.chrono.Saison.1.(Season.1).(DVDRip).Episode.01.(00h-01h).[x264HP.He-aac{fr-eng}.S.mkv
+fakeFileTree/Séries/24/24 season 1/[XCT].24.heures.chrono.Saison.1.(Season.1).(DVDRip).Episode.01.(00h-01h).[x264HP.He-aac{fr-eng}.S.mkv
 24
-W:/Videos/Séries/24/24 season 2/[™].24H.Chrono.S2E04.11h-12h.(24.Season.2.11am-12pm).DVDRIP.{Rv9.HE-AAC}{Fr-Eng}{SUB.Fr-Eng}{Chap.mkv
+fakeFileTree/Séries/24/24 season 2/[™].24H.Chrono.S2E04.11h-12h.(24.Season.2.11am-12pm).DVDRIP.{Rv9.HE-AAC}{Fr-Eng}{SUB.Fr-Eng}{Chap.mkv
 24
-W:/Videos/Séries/24/24 season 2/[™].24H.Chrono.Saison.2.Ep05.12h-13h.(24.Season.2.12pm-1pm).DVDRIP.{Rv9.HE-AAC}{Fr-Eng}{SUB.Fr-En.mkv
+fakeFileTree/Séries/24/24 season 2/[™].24H.Chrono.Saison.2.Ep05.12h-13h.(24.Season.2.12pm-1pm).DVDRIP.{Rv9.HE-AAC}{Fr-Eng}{SUB.Fr-En.mkv
 24
-W:/Videos/Séries/24/24 season 7 HD/24.S07E01.08AM.TO.09AM.720p.HDTV.x264-DIMENSION.mkv
+fakeFileTree/Séries/24/24 season 7 HD/24.S07E01.08AM.TO.09AM.720p.HDTV.x264-DIMENSION.mkv
 24
 Webisodes/BSG.-.The.Face.Of.The.Enemy.Webisode.04.mkv
 BSG.-.The.Face.Of.The.Enemy
-W:/Videos/Séries/Candice Renoir/Candice.Renoir.2x01_France.2_2014_04_18_20_47.ts
+fakeFileTree/Séries/Candice Renoir/Candice.Renoir.2x01_France.2_2014_04_18_20_47.ts
 Candice.Renoir
-W:/Videos/Séries/Castle/Castle Season 7/Castle.2009.S07E01.720p.HDTV.X264-DIMENSION[rarbg]/Sample/castle.701.720p-dimension.sample.mkv
+fakeFileTree/Séries/Castle/Castle Season 7/Castle.2009.S07E01.720p.HDTV.X264-DIMENSION[rarbg]/Sample/castle.701.720p-dimension.sample.mkv
 Castle
-W:/Videos/Séries/Caïn/Caïn.0307.1280x720.VFF.[emule-island.ru].mkv
+fakeFileTree/Séries/Caïn/Caïn.0307.1280x720.VFF.[emule-island.ru].mkv
 Caïn
-W:/Videos/Séries/Fais pas ci, fais pas ça/Fais.Pas.Ci,.Fais.Pas.Ca.-.201.-.Les.bonnes.manieres.avi
+fakeFileTree/Séries/Fais pas ci, fais pas ça/Fais.Pas.Ci,.Fais.Pas.Ca.-.201.-.Les.bonnes.manieres.avi
 Fais.Pas.Ci,.Fais.Pas.Ca
-W:/Videos/Séries/FireFly & Serenity/01_Serenity.mp4
+fakeFileTree/Séries/FireFly & Serenity/01_Serenity.mp4
 Serenity
-W:/Videos/Séries/Game of thrones/Season 1 BRRip/gamethrines1e9bd72.Ganool.mkv
+fakeFileTree/Séries/Game of thrones/Season 1 BRRip/gamethrines1e9bd72.Ganool.mkv
 Game of thrones
-W:/Videos/Séries/Heroes/Heroes season 2/Heroes.2.01.avi
+fakeFileTree/Séries/Heroes/Heroes season 2/Heroes.2.01.avi
 Heroes
-W:/Videos/Séries/Heroes/Heroes season 1/Heroes.Season.1.Ep01.avi
+fakeFileTree/Séries/Heroes/Heroes season 1/Heroes.Season.1.Ep01.avi
 Heroes
-W:/Videos/Séries/Kaamelott/Livre I/[XCT].Kaamelott.Livre.I.Bonus.1.Dies.Irae.La.Genese.De.Kaamelott.DVDRip.[x264+AAC].mkv
+fakeFileTree/Séries/Kaamelott/Livre I/[XCT].Kaamelott.Livre.I.Bonus.1.Dies.Irae.La.Genese.De.Kaamelott.DVDRip.[x264+AAC].mkv
 Kaamelott
-W:/Videos/Séries/Kaamelott/Livre VI/Kaamelott.6x01.Miles.Ignotus.FR.HDTV.XviD-JMT.[tvu.org.ru].avi
+fakeFileTree/Séries/Kaamelott/Livre VI/Kaamelott.6x01.Miles.Ignotus.FR.HDTV.XviD-JMT.[tvu.org.ru].avi
 Kaamelott
-W:/Videos/Séries/Meurtres au paradis/Meurtres.au.paradis.S2.E04.Le.Secret.Du.Pirate.avi
+fakeFileTree/Séries/Meurtres au paradis/Meurtres.au.paradis.S2.E04.Le.Secret.Du.Pirate.avi
 Meurtres.au.paradis
-W:/Videos/Séries/NCIS/1x01.Yankee.white.avi
+fakeFileTree/Séries/NCIS/1x01.Yankee.white.avi
 NCIS
-W:/Videos/Séries/Sex And The City/Season 1/Sex.And.The.City.-.Saison.01.Episode.01.-.Femmes.Seules.Et.Célibataires.Endurcis.mkv
+fakeFileTree/Séries/Sex And The City/Season 1/Sex.And.The.City.-.Saison.01.Episode.01.-.Femmes.Seules.Et.Célibataires.Endurcis.mkv
 Sex And The City
-W:/Videos/Séries/Star Wars Rebels/Star.Wars.Rebels.S02E02.720p.HDTV.X264-UAV[rarbg]/SAMPLE/star.wars.rebels.202.720p-uav-sample.mkv
+fakeFileTree/Séries/Star Wars Rebels/Star.Wars.Rebels.S02E02.720p.HDTV.X264-UAV[rarbg]/SAMPLE/star.wars.rebels.202.720p-uav-sample.mkv
 star.wars.rebels
-W:/Videos/Séries/Stargate Atlantis/Season 5/[????:?????.???].Stargate.Atlantis.5x01.Search.And.Rescue.720p.HDTV.x264-LOLCATS.mkv
+fakeFileTree/Séries/Stargate Atlantis/Season 5/[????:?????.???].Stargate.Atlantis.5x01.Search.And.Rescue.720p.HDTV.x264-LOLCATS.mkv
 Stargate Atlantis
-W:/Videos/Séries/Stargate SG1/StargateSG1Season1/[Stargate.SG1]-[Saison.01.Episode.01]-[x264+HeAACv2]-[FR+ENG+Sub.FR+ENG]-[Chap.FR]-[AzF].mkv
+fakeFileTree/Séries/Stargate SG1/StargateSG1Season1/[Stargate.SG1]-[Saison.01.Episode.01]-[x264+HeAACv2]-[FR+ENG+Sub.FR+ENG]-[Chap.FR]-[AzF].mkv
 Stargate.SG1
-W:/Videos/Séries/The Big Bang Theory/Season 1/The.Big.Bang.Theory.-.117.-.The.Tangerine.Factor.avi
+fakeFileTree/Séries/The Big Bang Theory/Season 1/The.Big.Bang.Theory.-.117.-.The.Tangerine.Factor.avi
 The Big Bang Theory
-W:/Videos/Séries/The Big Bang Theory/Season 2/01.-.The.Bad.Fish.Paradigm.avi
+fakeFileTree/Séries/The Big Bang Theory/Season 2/01.-.The.Bad.Fish.Paradigm.avi
 The Big Bang Theory
-W:/Videos/Spectacles (Comiques, Théatre)/Montreux Comedy Festival 2012/Kyan.Khojandi._.Bérengère.Krief.-._Couchent-ils.vraiment.ensemble.__.mp4
+fakeFileTree/Spectacles (Comiques, Théatre)/Montreux Comedy Festival 2012/Kyan.Khojandi._.Bérengère.Krief.-._Couchent-ils.vraiment.ensemble.__.mp4
 Kyan.Khojandi._.Bérengère.Krief.-._Couchent-ils.vraiment.ensemble
-W:/Videos/Films Français/Grande.Gueule.-.Dikkenek.-.Florence.Foresti.avi
+fakeFileTree/Films Français/Grande.Gueule.-.Dikkenek.-.Florence.Foresti.avi
 Grande.Gueule.-.Dikkenek
-W:/Videos/Séries/Kaamelott/Livre V/Kaamelott.-.Livre.V.-.01.-.Les.Repentants.avi
+fakeFileTree/Séries/Kaamelott/Livre V/Kaamelott.-.Livre.V.-.01.-.Les.Repentants.avi
 Kaamelott
-W:/Videos/Films pour enfants/Disney/N°.999.-.2009.Walt.Disney.-.Up.(Là-haut).2009.BluRay.1080p.AAC.x264-CHD.mkv
+fakeFileTree/Films pour enfants/Disney/N°.999.-.2009.Walt.Disney.-.Up.(Là-haut).2009.BluRay.1080p.AAC.x264-CHD.mkv
 Up
-W:/Videos/Films pour enfants/Disney/N°.019.-.1961.Walt.Disney.-.Les.101.Dalmatiens.avi
+fakeFileTree/Films pour enfants/Disney/N°.019.-.1961.Walt.Disney.-.Les.101.Dalmatiens.avi
 Les.101.Dalmatiens
-W:/Videos/Films pour enfants/Disney/N°.020.-.1963.Walt.Disney.-.Merlin.L'enchanteur.(The.Sword.In.The.Stone).1963.720p.[DTS.FRE.-.AAC.5.1.ENG].[Subs.FRE.ENG].by.Olaf69.mkv
+fakeFileTree/Films pour enfants/Disney/N°.020.-.1963.Walt.Disney.-.Merlin.L'enchanteur.(The.Sword.In.The.Stone).1963.720p.[DTS.FRE.-.AAC.5.1.ENG].[Subs.FRE.ENG].by.Olaf69.mkv
 Merlin.L'enchanteur
-W:/Videos/Films pour enfants/Disney/N°.067.-.2003.Walt.Disney.-.Les.101.Dalmatiens.2.-.Sur.la.trace.des.héros.avi
+fakeFileTree/Films pour enfants/Disney/N°.067.-.2003.Walt.Disney.-.Les.101.Dalmatiens.2.-.Sur.la.trace.des.héros.avi
 Les.101.Dalmatiens.2.-.Sur.la.trace.des.héros
-W:/Videos/Films pour enfants/Disney/N°.094.-.2008.Walt.Disney.-.Wall-E.FRENCH.720p.AC3-5.1.x264-GKS.mkv
+fakeFileTree/Films pour enfants/Disney/N°.094.-.2008.Walt.Disney.-.Wall-E.FRENCH.720p.AC3-5.1.x264-GKS.mkv
 Wall-E
-W:/Videos/Films Américains/Project.X.2012.EXTENDED.720p.BluRay.X264-AMIABLE.mkv
+fakeFileTree/Films Américains/Project.X.2012.EXTENDED.720p.BluRay.X264-AMIABLE.mkv
 Project.X
-W:/Videos/Films historiques et biopics/La.French.2014.FRENCH.720p.BluRay.DTS.x264-Goatlove.[emule-island.ru].mkv
+fakeFileTree/Films historiques et biopics/La.French.2014.FRENCH.720p.BluRay.DTS.x264-Goatlove.[emule-island.ru].mkv
 La.French
-W:/Videos/Films Documentaires/Une.vérité.qui.dérange.-.An.inconvenient.truth.-.Fr.+.En.mkv
+fakeFileTree/Films Documentaires/Une.vérité.qui.dérange.-.An.inconvenient.truth.-.Fr.+.En.mkv
 Une.vérité.qui.dérange.-.An.inconvenient.truth

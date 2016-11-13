@@ -54,4 +54,6 @@ QMAKE_EXTRA_TARGETS += titlePatterns names
 PRE_TARGETDEPS += $${DESTDIR}/titlePatterns.json $${DESTDIR}/directorsAndActorsNames.txt
 
 DISTFILES += \
-    movieTitleTests.txt
+    movieTitleTests.txt \
+    createFakeFileTree.sh
+
