@@ -27,9 +27,9 @@ public:
 
     static bool isMovieFile(QString filename);
 
-signals:
-
-public slots:
+private:
+    QString extractTitle(QString filename);
+    int getLastYearOffset(QString s);
 };
 
 #endif // MOVIEFILE_H

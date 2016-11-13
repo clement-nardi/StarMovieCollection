@@ -68,14 +68,32 @@ void Tests::testExtractTitle(){
     QVERIFY(file.exists());
     file.open(QIODevice::ReadOnly);
     QTextStream stream(&file);
+    stream.setCodec("UTF-8");
     QVERIFY(!stream.atEnd());
+
+    int countTitles = 0;
+    int countMatches = 0;
+    QStringList failedPaths;
+    QStringList expectedTitles;
 
     while (!stream.atEnd()) {
         QString path = stream.readLine();
         QString title = stream.readLine();
-        QCOMPARE(MovieFile(path).extractTitleFromFilename(),
-                 QString(title));
+        countTitles++;
+        if (MovieFile(path).extractTitleFromFilename() == QString(title)) {
+            countMatches++;
+        } else {
+            failedPaths << path;
+            expectedTitles << title;
+        }
     }
+
+    for (int i = 0; i < failedPaths.size(); i++) {
+        qDebug() << "Actual   :" << MovieFile(failedPaths[i]).extractTitleFromFilename();
+        qDebug() << "Expected :" << expectedTitles[i];
+    }
+
+    QCOMPARE(countTitles, countMatches);
 }
 
 QTEST_MAIN(Tests)

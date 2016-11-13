@@ -52,3 +52,6 @@ names.depends = $${PWD}/../Application/directorsAndActorsNames.txt
 
 QMAKE_EXTRA_TARGETS += titlePatterns names
 PRE_TARGETDEPS += $${DESTDIR}/titlePatterns.json $${DESTDIR}/directorsAndActorsNames.txt
+
+DISTFILES += \
+    movieTitleTests.txt
