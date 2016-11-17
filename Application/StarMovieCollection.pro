@@ -17,13 +17,19 @@ SOURCES += main.cpp\
         mainwindow.cpp \
     tmdbapi.cpp \
     persistentcache.cpp \
-    moviefile.cpp
+    moviefile.cpp \
+    moviecollectionmodel.cpp \
+    moviecollectiondelegate.cpp \
+    movie.cpp
 
 
 HEADERS  += mainwindow.h \
     tmdbapi.h \
     persistentcache.h \
-    moviefile.h
+    moviefile.h \
+    moviecollectionmodel.h \
+    moviecollectiondelegate.h \
+    movie.h
 
 FORMS    += mainwindow.ui
 

@@ -19,7 +19,7 @@ class TMDBQuery: public QObject {
 public:
     static TMDBQuery * newSearchQuery(QString keywords, int page = 1);
     static TMDBQuery * newMovieQuery(int movieID);
-    void send();
+    void send(bool hasPriority = false);
     static float getCacheHitRatio();
 
 signals:
@@ -35,9 +35,19 @@ private:
     QUrlQuery query;
     QNetworkReply * reply;
     int page;
+    bool priority;
 
     static PersistentCache cache;
 
+    void process();
+
+    static QList<TMDBQuery*> queue;
+    static QTimer *waitTimer();
+    static QTimer *resetTimer();
+    static int maxQueries;
+    static int sentQueries;
+    static void processQueue();
+    static void resetQueryCount();
 private slots:
 
     void treatResponse();

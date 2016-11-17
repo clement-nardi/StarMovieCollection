@@ -42,14 +42,17 @@ int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
     qInstallMessageHandler(myMessageOutput);
-    if (argc > 1 && QString(argv[1]) == "-d") {
+    if (argc > 1 && QString(argv[1]) == "-d" || true) {
         debugMode = true;
     }
 
     qDebug() << "Hello World!!";
 
-
-    MainWindow w;
+    MovieCollectionModel *movieModel = new MovieCollectionModel();
+    MainWindow w(movieModel);
     w.show();
+
+    movieModel->browseFolders();
+
     return a.exec();
 }

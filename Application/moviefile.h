@@ -3,6 +3,8 @@
 
 #include <QObject>
 #include <QFileInfo>
+#include <QJsonDocument>
+#include "movie.h"
 
 static QStringList videoExtensions = QString("3g2,3gp,amv,asf,avi,drc,f4a,f4b,f4p,f4v,flv,gif,gifv,m1v,m2t,m2ts,m2v,m4p,m4v,mkv,mng,mod,mov,mp2,mp2v,mp4,mpe,mpeg,mpg,mpv,mpv2,mts,mxf,nsv,ogg,ogv,qt,rm,rmvb,roq,svi,ts,tts,vob,webm,wm,wmv,yuv").split(",");
 /**
@@ -15,21 +17,35 @@ class MovieFile : public QObject
 {
     Q_OBJECT
 public:
-    explicit MovieFile(QString path, QObject *parent = 0);
+    explicit MovieFile(QString path, int row_, QObject *parent = 0);
 
     QFileInfo fileInfo;
-
-    QString extractTitleFromFilename();
-    QString extractAlternateTitle();
-    QString getYear();
-
-    QString prettyName();
+    QString getTitle();
+    QString year;
+    QString prettyName;
+    Movie *getMovie();
+    int row;
 
     static bool isMovieFile(QString filename);
 
+    QString titleSubString; // substring of the file's complete path
+
+signals:
+    void hasChanged(int);
+
 private:
+    QString extractYear();
+    QString extractTitleFromFilename();
     QString extractTitle(QString filename);
+    QString computePrettyName();
+    Movie *movie;
+    bool searchQuerySent;
+
     int getLastYearOffset(QString s);
+
+private slots:
+    void handleSearchResults(QJsonDocument doc);
+    void movieHasChanged();
 };
 
 #endif // MOVIEFILE_H

@@ -7,11 +7,27 @@
 #include <QStringList>
 #include <QJsonArray>
 #include <QDir>
+#include "tmdbapi.h"
+#include "movie.h"
 
-MovieFile::MovieFile(QString path, QObject *parent) : QObject(parent) {
+MovieFile::MovieFile(QString path, int row_, QObject *parent) : QObject(parent) {
+    movie = NULL;
+    searchQuerySent = false;
+    row = row_;
     fileInfo = QFileInfo(path);
+    year = extractYear();
+    titleSubString = extractTitleFromFilename();
+    prettyName = computePrettyName();
+
+    TMDBQuery *tmdbquery = TMDBQuery::newSearchQuery(getTitle());
+    connect(tmdbquery, SIGNAL(response(QJsonDocument)), this, SLOT(handleSearchResults(QJsonDocument)));
+    tmdbquery->send(false);
 }
 
+
+QString MovieFile::getTitle() {
+    return titleSubString.replace("."," ");
+}
 
 class CommonPatterns: public QMap<QString,QRegularExpression> {
 public:
@@ -100,7 +116,7 @@ CommonPatterns::CommonPatterns(){
     } else {
         qWarning() << "Missing file: " << file.fileName();
     }
-    qDebug() << *this;
+    //qDebug() << *this;
 }
 
 static CommonPatterns pattern() {
@@ -111,7 +127,7 @@ static CommonPatterns pattern() {
 
 QString MovieFile::extractTitleFromFilename() {
     QString title;
-    qDebug() << fileInfo.absoluteFilePath();
+    //qDebug() << fileInfo.absoluteFilePath();
 
     QString filename = fileInfo.completeBaseName();
 
@@ -138,20 +154,16 @@ QString MovieFile::extractTitleFromFilename() {
         QRegularExpressionMatch seMatchMaybe = pattern()["maybeCompleteEpisodeID"].match(filename);
         bool isEpisodeOfSerie = false;
 
-        qDebug() << QString("s=%1 e=%2 se=%3 se3d=%4")
-                    .arg(sMatch.captured())
-                    .arg(eMatch.captured())
-                    .arg(seMatch.captured())
-                    .arg(seMatchMaybe.captured());
+        //qDebug() << QString("s=%1 e=%2 se=%3 se3d=%4").arg(sMatch.captured()).arg(eMatch.captured()).arg(seMatch.captured()).arg(seMatchMaybe.captured());
 
         //Detect Series Episode
         if ((eMatch.hasMatch() && sMatch.hasMatch()) ||
             seMatch.hasMatch() ) {
             //don't look for counters, they're expected
-            qDebug() << "Episode of a Series";
+            //qDebug() << "Episode of a Series";
             isEpisodeOfSerie = true;
         } else if (seMatchMaybe.hasMatch()) {
-            qDebug() << "Maybe Episode of a Series?";
+            //qDebug() << "Maybe Episode of a Series?";
             // 3-digit episode IDs are source of problem
             // for instance it must be matched in:
             //    Fais.Pas.Ci,.Fais.Pas.Ca.-.201.-.Les.bonnes.manieres   // season 2 episode 1
@@ -178,10 +190,7 @@ QString MovieFile::extractTitleFromFilename() {
                 }
             }
             float episodesRatio = (float)countEpisodes/(float)countMovieFiles;
-            qDebug() << QString("episodes: %1  movieFiles: %2 - ratio=%3")
-                        .arg(countEpisodes)
-                        .arg(countMovieFiles)
-                        .arg(episodesRatio);
+            //qDebug() << QString("episodes: %1  movieFiles: %2 - ratio=%3").arg(countEpisodes).arg(countMovieFiles).arg(episodesRatio);
             if (episodesRatio > 0.9) {
                 //This is likely to be an episode as well
                 filename = filename.left(seMatchMaybe.capturedStart());
@@ -191,7 +200,7 @@ QString MovieFile::extractTitleFromFilename() {
             }
         }
         if (isEpisodeOfSerie) {
-            qDebug() << "Episode of a Series";
+            //qDebug() << "Episode of a Series";
             title = extractTitle(filename);
             if (title.size() == 0) {
                 //backup to folder/filename
@@ -199,16 +208,16 @@ QString MovieFile::extractTitleFromFilename() {
             }
         } else {
             //Movie file
-            qDebug() << "Movie File";
+            //qDebug() << "Movie File";
             int afterCounter = 0;
             int nbCharsToTrim = 0;
             while (true) {
                 //detect counter
-                qDebug() << filename.mid(afterCounter);
+                //qDebug() << filename.mid(afterCounter);
                 QRegularExpressionMatch matchedCounter = pattern()["counter"].match(filename,afterCounter==0?0:afterCounter-1);
                 afterCounter = matchedCounter.capturedEnd();
                 if (afterCounter >= 0) {
-                    qDebug() << "Found potential counter before " << afterCounter << " in " << filename;
+                    //qDebug() << "Found potential counter before " << afterCounter << " in " << filename;
 
                     QStringList filenames = fileInfo.dir().entryList();
                     QString p;
@@ -225,12 +234,12 @@ QString MovieFile::extractTitleFromFilename() {
                                 uniqueNumbers.insert(fn.mid(matchedCounter.capturedStart(),matchedCounter.capturedLength()));
                             }
                         }
-                        qDebug() << "nb match " << countMatches << " over " << filenames.size() << " files";
-                        qDebug() << "nb unique " << uniqueNumbers.size() << uniqueNumbers ;
+                        //qDebug() << "nb match " << countMatches << " over " << filenames.size() << " files";
+                        //qDebug() << "nb unique " << uniqueNumbers.size() << uniqueNumbers ;
                         if (uniqueNumbers.size() > 4 ) {
                             nbCharsToTrim = afterCounter;
                             afterCounter = pattern()["subSectionSeparator"].match(filename,afterCounter+1).capturedEnd();
-                            qDebug() << afterCounter;
+                            //qDebug() << afterCounter;
                             if (afterCounter <= nbCharsToTrim) {
                                 break;
                             }
@@ -256,38 +265,38 @@ QString MovieFile::extractTitle(QString filename) {
         return filename;
     }
 
-    //qDebug() << filename;
+    ////qDebug() << filename;
     QString result = sections.at(0);
     if (sections.size()>1 &&
             filename.indexOf(QRegularExpression("^\\[[^\\]]*\\][^\\[]{2}")) >= 0) {
         result = sections.at(1);
     }
-    qDebug() << "section:" << result;
+    //qDebug() << "section:" << result;
 
     result = result.mid(pattern()["startingSeparators"].match(result).capturedEnd());//remove starting seperators
-    qDebug() << "startin:" <<result;
+    //qDebug() << "startin:" <<result;
 
     result = result.left(getLastYearOffset(result));
-    qDebug() << "year   :" <<result;
+    //qDebug() << "year   :" <<result;
 
     int indexOfFirstNonWord = result.indexOf(pattern()["nonWord"]);
     result = result.left(indexOfFirstNonWord);
     result = result.left(result.indexOf(pattern()["endingSeparators"]));//remove trailing seperators
-    qDebug() << "nonword:" <<result;
+    //qDebug() << "nonword:" <<result;
 
     //remove trailing word that is likely not part of the title
     result = result.left(result.indexOf(pattern()["likelyEndingWordNotPartOfTitle"],4));
-    qDebug() << "endword:" <<result;
+    //qDebug() << "endword:" <<result;
 
     QStringList subsections = result.split(pattern()["subSectionSeparator"]);
     int titlesize = subsections.at(0).size();
     int cumulatedSize = titlesize;
-    qDebug() << subsections;
-    //qDebug() << pattern()["likelyNonTitle"];
+    //qDebug() << subsections;
+    ////qDebug() << pattern()["likelyNonTitle"];
     for (int i = 1; i<subsections.size(); i++) {
         cumulatedSize += 3 + subsections.at(i).size();
         if (subsections.at(i).indexOf(pattern()["likelyNonTitle"])>=0) {
-            qDebug() << "subsect:" <<i << "likelyNonTitle";
+            //qDebug() << "subsect:" <<i << "likelyNonTitle";
             break;
         }
         int goodTitleSize = 55;
@@ -314,7 +323,7 @@ QString MovieFile::extractTitle(QString filename) {
     return result;
 }
 
-QString MovieFile::getYear() {
+QString MovieFile::extractYear() {
     QString filename = fileInfo.completeBaseName();
     QString year = "";
     int yearIdx = getLastYearOffset(filename);
@@ -334,24 +343,65 @@ int MovieFile::getLastYearOffset(QString s) {
     return offset;
 }
 
-QString MovieFile::prettyName() {
-    QString title = extractTitleFromFilename();
-    QString year = getYear();
+Movie *MovieFile::getMovie() {
+    if (movie != NULL) {
+        return movie;
+    } else {
+        if (!searchQuerySent) {
+            searchQuerySent = true;
+            TMDBQuery *tmdbquery = TMDBQuery::newSearchQuery(getTitle());
+            connect(tmdbquery, SIGNAL(response(QJsonDocument)), this, SLOT(handleSearchResults(QJsonDocument)));
+            tmdbquery->send(true);
+        }
+    }
+    return NULL;
+}
+
+void MovieFile::handleSearchResults(QJsonDocument doc) {
+    //qDebug() << "handleSearchResults(doc)";
+    searchQuerySent = false;
+    QJsonValue results = doc.object()["results"];
+    if (results.isArray()) {
+        QJsonArray array = results.toArray();
+        if (array.size() > 0) {
+            int movieID = array[0].toObject()["id"].toInt(-1);
+            //qDebug() << "MovieID=" << movieID;
+            if (movieID >= 0) {
+                movie = Movie::getMovie(movieID);
+                emit hasChanged(row);
+                connect(movie, SIGNAL(hasChanged()), this, SLOT(movieHasChanged()));
+            }
+        } else {
+            qWarning() << "empty results array";
+        }
+    } else {
+        qWarning() << "results is not an array";
+    }
+}
+
+
+QString MovieFile::computePrettyName() {
     QString richtext = "<html><head/><body><p>";
 
     QString filename = fileInfo.absoluteFilePath();
 
-    if (title.size() > 0) {
-        filename = filename.replace(title,"<span style=\" color:#03c010;\">"+title+"</span>");
+    if (titleSubString.size() > 0) {
+        filename = filename.replace(titleSubString,"<span style=\" color:#03c010;\">"+titleSubString+"</span>");
     }
     if (year.size() > 0) {
         filename = filename.replace(year,"<span style=\" color:#2e0bd9;\">"+year+"</span>");
     }
     richtext += filename + "</p></body></html>";
-    //qDebug() << richtext;
+    ////qDebug() << richtext;
     return richtext;
 }
 
 bool MovieFile::isMovieFile(QString filename) {
     return videoExtensions.contains(filename.split('.').last(), Qt::CaseInsensitive);
+}
+
+void MovieFile::movieHasChanged() {
+    //qDebug() << "movieHasChanged()";
+    //qDebug() << QString("emit hasChanged(%1)").arg(row);
+    emit hasChanged(row);
 }
