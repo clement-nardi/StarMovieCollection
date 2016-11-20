@@ -48,7 +48,7 @@ int main(int argc, char *argv[])
 
     qDebug() << "Hello World!!";
 
-    MovieCollectionModel *movieModel = new MovieCollectionModel();
+    VideoCollectionModel *movieModel = new VideoCollectionModel();
     MainWindow w(movieModel);
     w.show();
 

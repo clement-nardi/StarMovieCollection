@@ -2,7 +2,37 @@
 #include "tmdbapi.h"
 #include <QObject>
 #include <QSignalSpy>
-#include "moviefile.h"
+#include "videofile.h"
+#include "romanconverter.h"
+
+void Tests::testRomanConverter() {
+
+    QMap<int,QString> m;
+    m[1] = "I";
+    m[2] = "II";
+    m[3] = "III";
+    m[4] = "IV";
+    m[5] = "V";
+    m[6] = "VI";
+    m[7] = "VII";
+    m[8] = "VIII";
+    m[9] = "IX";
+    m[10] = "X";
+    m[11] = "XI";
+    m[12] = "XII";
+    m[13] = "XIII";
+    m[14] = "XIV";
+    m[15] = "XV";
+    m[35] = "XXXV";
+    m[1985] = "MCMLXXXV";
+
+    QMapIterator<int,QString> i(m);
+    while (i.hasNext()) {
+        i.next();
+        QCOMPARE(i.key(),roman2int(i.value()));
+        QCOMPARE(int2roman(i.key()),i.value());
+    }
+}
 
 void Tests::testTMDBSearch() {
     QBENCHMARK {
@@ -53,13 +83,13 @@ void Tests::testTMDBMovie() {
     QCOMPARE(TMDBQuery::getCacheHitRatio(), 1.0);
 }
 
-void Tests::testIsMoviefile() {
-    QVERIFY(MovieFile::isMovieFile(QString("toto/tata.avi")));
-    QVERIFY(MovieFile::isMovieFile(QString("toto/tata.mkv")));
-    QVERIFY(MovieFile::isMovieFile(QString("toto/tata.MkV")));
-    QVERIFY(MovieFile::isMovieFile(QString("toto/tata.txt.avi")));
-    QVERIFY(!MovieFile::isMovieFile(QString("toto/tata.avi.txt")));
-    QVERIFY(!MovieFile::isMovieFile(QString("tata")));
+void Tests::testIsVideoFile() {
+    QVERIFY(VideoFile::isVideoFile(QString("toto/tata.avi")));
+    QVERIFY(VideoFile::isVideoFile(QString("toto/tata.mkv")));
+    QVERIFY(VideoFile::isVideoFile(QString("toto/tata.MkV")));
+    QVERIFY(VideoFile::isVideoFile(QString("toto/tata.txt.avi")));
+    QVERIFY(!VideoFile::isVideoFile(QString("toto/tata.avi.txt")));
+    QVERIFY(!VideoFile::isVideoFile(QString("tata")));
 }
 
 void Tests::testExtractTitle(){
@@ -80,7 +110,8 @@ void Tests::testExtractTitle(){
         QString path = "../../Tests/" + stream.readLine();
         QString title = stream.readLine();
         countTitles++;
-        if (MovieFile(path).extractTitleFromFilename() == QString(title)) {
+        //qDebug() << path;
+        if (VideoFile(path,0,false).titleSubString == QString(title)) {
             countMatches++;
         } else {
             failedPaths << path;
@@ -89,11 +120,50 @@ void Tests::testExtractTitle(){
     }
 
     for (int i = 0; i < failedPaths.size(); i++) {
-        qDebug() << "Actual   :" << MovieFile(failedPaths[i]).extractTitleFromFilename();
+        qDebug() << "Actual   :" << VideoFile(failedPaths[i],0,false).titleSubString;
         qDebug() << "Expected :" << expectedTitles[i];
     }
 
-    QCOMPARE(countTitles, countMatches);
+    QCOMPARE(countMatches, countTitles);
+}
+
+void Tests::testExtractSeasonEpisode() {
+    QFile file("../../Tests/seasonEpisodeTests.txt");
+    QVERIFY(file.exists());
+    file.open(QIODevice::ReadOnly);
+    QTextStream stream(&file);
+    stream.setCodec("UTF-8");
+    QVERIFY(!stream.atEnd());
+
+    int countPaths = 0;
+    int countMatches = 0;
+    QStringList failedPaths;
+    QList<int> expectedSeason;
+    QList<int> expectedEpisode;
+
+    while (!stream.atEnd()) {
+        QString path = "../../Tests/" + stream.readLine();
+        int seasonNumber = stream.readLine().toInt();
+        int episodeNumber = stream.readLine().toInt();
+        countPaths++;
+        VideoFile v(path,0,false);
+        //qDebug() << path;
+        if (v.seasonNumber == seasonNumber && v.episodeNumber == episodeNumber) {
+            countMatches++;
+        } else {
+            failedPaths     << path;
+            expectedSeason  << seasonNumber;
+            expectedEpisode << episodeNumber;
+        }
+    }
+
+    for (int i = 0; i < failedPaths.size(); i++) {
+        VideoFile v(failedPaths[i],0,false);
+        qDebug() << "Actual   : season " << v.seasonNumber << " episode " << v.episodeNumber;
+        qDebug() << "Expected : season " << expectedSeason[i] << " episode " << expectedEpisode[i];
+    }
+
+    QCOMPARE(countMatches, countPaths);
 }
 
 QTEST_MAIN(Tests)

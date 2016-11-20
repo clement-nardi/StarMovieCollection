@@ -2,7 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include "moviecollectionmodel.h"
+#include "videocollectionmodel.h"
 
 namespace Ui {
 class MainWindow;
@@ -13,12 +13,14 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    explicit MainWindow(MovieCollectionModel *movieModel_, QWidget *parent = 0);
+    explicit MainWindow(VideoCollectionModel *movieModel_, QWidget *parent = 0);
     ~MainWindow();
 
+private slots:
+    void rearangeColumns();
 private:
     Ui::MainWindow *ui;
-    MovieCollectionModel *movieModel;
+    VideoCollectionModel *movieModel;
 };
 
 #endif // MAINWINDOW_H

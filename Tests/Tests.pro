@@ -7,12 +7,15 @@ CONFIG += testcase
 SOURCES += tests.cpp \
            ../Application/tmdbapi.cpp \
            ../Application/persistentcache.cpp\
-           ../Application/moviefile.cpp
+           ../Application/videofile.cpp\
+           ../Application/video.cpp\
+           ../Application/romanconverter.cpp
 
 HEADERS  += tests.h \
             ../Application/tmdbapi.h \
             ../Application/persistentcache.h\
-            ../Application/moviefile.h
+            ../Application/videofile.h\
+            ../Application/video.h
 
 INCLUDEPATH += ../Application
 
@@ -55,5 +58,6 @@ PRE_TARGETDEPS += $${DESTDIR}/titlePatterns.json $${DESTDIR}/directorsAndActorsN
 
 DISTFILES += \
     movieTitleTests.txt \
-    createFakeFileTree.sh
+    createFakeFileTree.sh \
+    seasonEpisodeTests.txt
 

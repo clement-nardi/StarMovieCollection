@@ -1,5 +1,5 @@
 {
-    "sep": "[ .\\-_]",
+    "sep": "[ .\\-_:]",
     "sectionSeparator":[
         "[\\(\\)\\[\\]\\{\\}/]",
         "[\\-=:!]{2,}",
@@ -7,25 +7,25 @@
         "$"
     ],
     "anySep":"(%sep|%sectionSeparator)",
-    "year":"(19|20|21)[0-9]{2}",
+    "year":"%anySep(?<year>(19|20|21)[0-9]{2})%anySep",
     "seasonKeyword":"(s|season|saison)",
     "episodeKeyword":"(e|ep|episode)",
     "romanSeasonNumber":"(I|II|III|IV|V|VI|VII|VIII|IX|X|XI|XII|XIII)",
     "seasonNumber":"(0?[1-9]|[1-3][0-9])",
     "episodeNumber":"(0{0,2}[1-9]|0?[1-9][0-9]|[1-3][0-9]{2})",
     "seasonID": [
-        "%anySep%seasonKeyword%sep*%seasonNumber%anySep",
-        "%anySeplivre%sep+%romanSeasonNumber%anySep"
+        "%anySep%seasonKeyword%sep*(?<seasonNumber6>%seasonNumber)%anySep",
+        "%anySeplivre%sep+(?<seasonNumber7>%romanSeasonNumber)%anySep"
     ],
-    "episodeID":"%anySep%episodeKeyword%sep*%episodeNumber%anySep",
+    "episodeID":"%anySep%episodeKeyword%sep*(?<episodeNumber6>%episodeNumber)%anySep",
     "completeEpisodeID":[
-        "%seasonKeyword%sep*%seasonNumber%sep*%episodeKeyword%sep*%episodeNumber",
-        "%anySep%seasonNumberx%episodeNumber%anySep",
-        "%anySep0[1-9](0[1-9]|[1-2][0-9])%anySep"
+        "%seasonKeyword%sep*(?<seasonNumber1>%seasonNumber)%sep*%episodeKeyword%sep*(?<episodeNumber1>%episodeNumber)($|[^0-9])",
+        "%anySep(?<seasonNumber2>%seasonNumber)x(?<episodeNumber2>%episodeNumber)%anySep",
+        "%anySep(?<seasonNumber3>0[1-9])(?<episodeNumber3>0[1-9]|[1-2][0-9])%anySep"
     ],
     "maybeCompleteEpisodeID":[
-        "%anySep[1-9](0[1-9]|[1-2][0-9])%anySep",
-        "%anySep%seasonNumber\\.%episodeNumber%anySep"
+        "%anySep(?<seasonNumber4>[1-9])(?<episodeNumber4>0[1-9]|[1-2][0-9])%anySep",
+        "%anySep(?<seasonNumber5>%seasonNumber)\\.(?<episodeNumber5>%episodeNumber)%anySep"
     ],
     "wordFollowedByName":[
         "de",
@@ -88,7 +88,7 @@
     "startingSeparators":"^%sep*",
     "endingSeparators":"%sep*$",
     "castPreview":"%sep%wordFollowedByName%sep*%directorsAndActorsNames",
-    "counter":"(^|%sep)[0-9]{2,3}(%sep|:|$)",
+    "counter":"(^|%sep)(?<counterValue>[0-9]{2,3})(%sep|:|$)",
     "lowercaseChar":"[a-z]",
     "endingUppercaseWord":"%sep[A-Z]{3,}$",
 

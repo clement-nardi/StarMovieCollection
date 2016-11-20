@@ -9,10 +9,13 @@ class Tests : public QObject
     Q_OBJECT
 private slots:
 
+    void testRomanConverter();
+
     void testTMDBSearch();
     void testTMDBMovie();
 
-    void testIsMoviefile();
+    void testIsVideoFile();
+    void testExtractSeasonEpisode();
     void testExtractTitle();
 
 };

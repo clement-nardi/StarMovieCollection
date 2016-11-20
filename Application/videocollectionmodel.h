@@ -4,19 +4,23 @@
 #include <QObject>
 #include <QAbstractTableModel>
 #include <QProgressDialog>
-#include "moviefile.h"
+#include <QSet>
+#include "videofile.h"
 
-const int colID = 0;
-const int colTitle = 1;
-const int colYear = 2;
-const int colPath = 3;
+enum Columns {
+    colID,
+    colTitle,
+    colYear,
+    colPath,
+    nbColumns
+};
+const int htmlRole = 31;
 
 
-class MovieCollectionModel : public QAbstractTableModel
-{
+class VideoCollectionModel : public QAbstractTableModel {
     Q_OBJECT
 public:
-    MovieCollectionModel();
+    VideoCollectionModel();
     int rowCount(const QModelIndex & parent = QModelIndex()) const;
     int columnCount(const QModelIndex & parent = QModelIndex()) const;
     QVariant data(const QModelIndex & index, int role = Qt::DisplayRole) const;
@@ -25,7 +29,11 @@ public:
     void browseFolders();
 private:
     QStringList movieFolders;
-    QList<MovieFile*> moviefiles;
+    QList<VideoFile*> moviefiles;
+
+    QStringList additionalColumns;
+    QSet<QString> columnsSet;
+    bool resetOnGoing;
 
     int browsedDirsAndFiles;
     int discoveredDirsAndFiles;

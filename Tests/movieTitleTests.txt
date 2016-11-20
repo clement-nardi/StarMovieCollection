@@ -172,3 +172,5 @@ fakeFileTree/Films historiques et biopics/La.French.2014.FRENCH.720p.BluRay.DTS.
 La.French
 fakeFileTree/Films Documentaires/Une.vérité.qui.dérange.-.An.inconvenient.truth.-.Fr.+.En.mkv
 Une.vérité.qui.dérange.-.An.inconvenient.truth
+fakeFileTree/Séries/Battlestar Galactica 720p Complete 2003-2012 Extras Subs/02-Season 1/BSG.S01E01.33.720p.Brrip.+.C.mkv
+Battlestar Galactica

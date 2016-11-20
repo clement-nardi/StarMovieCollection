@@ -3,10 +3,10 @@
 
 #include <QStyledItemDelegate>
 
-class MovieCollectionDelegate : public QStyledItemDelegate
+class VideoCollectionDelegate : public QStyledItemDelegate
 {
 public:
-    MovieCollectionDelegate();
+    VideoCollectionDelegate();
 
 
     void paint(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index) const;

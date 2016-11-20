@@ -1,21 +1,22 @@
-#include "moviecollectiondelegate.h"
+#include "videocollectiondelegate.h"
 #include <QDebug>
 
-#include "moviecollectionmodel.h"
+#include "videocollectionmodel.h"
 #include <QLabel>
 #include <QPainter>
 
 #include <QTextDocument>
 
 
-MovieCollectionDelegate::MovieCollectionDelegate()
+VideoCollectionDelegate::VideoCollectionDelegate()
 {
 
 }
 
-void MovieCollectionDelegate::paint(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index) const {
+void VideoCollectionDelegate::paint(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index) const {
     //qDebug() << QString("paint(%1,%2)").arg(index.row()).arg(index.column());
-    if (index.column() == colPath) {
+    QVariant html = index.data(htmlRole);
+    if (html.isValid()) {
         QStyleOptionViewItemV4 options = option;
         initStyleOption(&options, index);
         painter->save();
@@ -29,7 +30,7 @@ void MovieCollectionDelegate::paint(QPainter *painter, const QStyleOptionViewIte
         //painter->drawText(option.rect,0,index.data().toString());
 
         QTextDocument doc;
-        doc.setHtml(index.data().toString());
+        doc.setHtml(html.toString());
 
         options.text = "";
         options.widget->style()->drawControl(QStyle::CE_ItemViewItem, &options, painter);
