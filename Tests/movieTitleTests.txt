@@ -174,3 +174,5 @@ fakeFileTree/Films Documentaires/Une.vérité.qui.dérange.-.An.inconvenient.tru
 Une.vérité.qui.dérange.-.An.inconvenient.truth
 fakeFileTree/Séries/Battlestar Galactica 720p Complete 2003-2012 Extras Subs/02-Season 1/BSG.S01E01.33.720p.Brrip.+.C.mkv
 Battlestar Galactica
+fakeFileTree/Films d'autres nationalités/The.Ghost.Writer.MULTi.1080p.BluRay.x264-FHD.[emule-island.com].mkv
+The.Ghost.Writer

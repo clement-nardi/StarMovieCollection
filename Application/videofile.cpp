@@ -33,7 +33,7 @@ VideoFile::VideoFile(QString path, int row_, bool searchDataNow, QObject *parent
 
 
 QString VideoFile::getTitle() {
-    return QString(titleSubString).replace("."," ");
+    return QString(titleSubString).replace("."," ").replace("_"," ");
 }
 
 

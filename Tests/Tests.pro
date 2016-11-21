@@ -9,7 +9,8 @@ SOURCES += tests.cpp \
            ../Application/persistentcache.cpp\
            ../Application/videofile.cpp\
            ../Application/video.cpp\
-           ../Application/romanconverter.cpp
+           ../Application/romanconverter.cpp\
+           ../Application/patterns.cpp
 
 HEADERS  += tests.h \
             ../Application/tmdbapi.h \

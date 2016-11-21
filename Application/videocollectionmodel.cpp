@@ -30,7 +30,7 @@ void VideoCollectionModel::listRecursively(QString folder, QFileInfoList &videoL
 
 VideoCollectionModel::VideoCollectionModel() {
     movieFolders << "W:/Videos/Films de Science-Fiction/"
-                 /*<< "W:/Videos/Films Français/"
+                 << "W:/Videos/Films Français/"
                  << "W:/Videos/Films Américains/"
                  << "W:/Videos/Films d'autres nationalités/"
                  << "W:/Videos/Films Documentaires/"
@@ -38,7 +38,7 @@ VideoCollectionModel::VideoCollectionModel() {
                  << "W:/Videos/Films Japonais/"
                  << "W:/Videos/Films pas encore vus/"
                  << "W:/Videos/Films pour enfants/"
-                 << "W:/Videos/Séries/"*/
+                 << "W:/Videos/Séries/"
                  << "W:/Videos/Spectacles (Comiques, Théatre)/";
     resetOnGoing = false;
 }
@@ -153,28 +153,45 @@ QVariant VideoCollectionModel::data(const QModelIndex & index, int role) const {
                                 .arg(text.left(4))
                                 .arg(text.mid(4));
                     } else if (columnTitle == "title" || columnTitle == "original_title") {
-                        QSet<QString> wordsToMatch = QSet<QString>::fromList(text.split(pattern()["anySep"],QString::SkipEmptyParts));
-
-                        if (wordsToMatch.size()>0) {
-                            QSetIterator<QString> wi(wordsToMatch);
-                            bool matched = false;
-                            while (wi.hasNext()) {
-                                QString word = wi.next();
-                                QRegularExpression wordRegexp = QRegularExpression("(^|[^a-z])" +
-                                                                                   QRegularExpression::escape(word) +
-                                                                                   "($|[^a-z])",
-                                                                                   QRegularExpression::CaseInsensitiveOption);
-                                if (wordRegexp.match(mf->titleSubString).hasMatch()) {
-                                    text.replace(word,"<span style=\" color:#2e0bd9;\">" + word + "</span>");
-                                    matched = true;
-                                } else if (wordRegexp.match(mf->fileInfo.absoluteFilePath()).hasMatch()) {
-                                    text.replace(word,"<span style=\" color:#3399aa;\">" + word + "</span>");
-                                    matched = true;
+                        QString out;
+                        int wordStart = -1;
+                        bool matched = false;
+                        QRegularExpression regex = pattern()["wordChar"];
+                        regex.setPatternOptions(QRegularExpression::UseUnicodePropertiesOption);
+                        for (int i = 0; i < text.size()+1; i++) {
+                            QChar c;
+                            if (i < text.size()) {
+                                c = text[i];
+                            }
+                            if (i < text.size() && regex.match(c).hasMatch()) {
+                                if (wordStart == -1) {
+                                    wordStart = i;
                                 }
+                            } else {
+                                if (wordStart != -1) {
+                                    QString word = text.mid(wordStart,i-wordStart);
+                                    QRegularExpression wordRegexp = QRegularExpression("(^|[^a-z0-9])" +
+                                                                                       QRegularExpression::escape(word) +
+                                                                                       "($|[^a-z0-9])",
+                                                                                       QRegularExpression::CaseInsensitiveOption);
+                                    if (wordRegexp.match(mf->titleSubString).hasMatch()) {
+                                        out.append("<span style=\" color:#2e0bd9;\">" + word + "</span>");
+                                        matched = true;
+                                    } else if (wordRegexp.match(mf->fileInfo.absoluteFilePath()).hasMatch()) {
+                                        out.append("<span style=\" color:#3399aa;\">" + word + "</span>");
+                                        matched = true;
+                                    } else {
+                                        out.append(word);
+                                    }
+                                }
+                                if (i < text.size()) {
+                                    out.append(c);
+                                }
+                                wordStart = -1;
                             }
-                            if (matched) {
-                                return text;
-                            }
+                        }
+                        if (matched) {
+                            return out;
                         }
                     }
                 }

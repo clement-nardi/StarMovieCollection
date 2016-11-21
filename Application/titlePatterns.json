@@ -67,7 +67,8 @@
         "FRENCH",
         "LIMITED",
         "REMASTERED",
-        "EXTENDED"
+        "EXTENDED",
+        "MULTI"
     ],
     "subSectionSeparator":"%sep{3}",
     "directorsAndActorsNames":{"listFromFile":"directorsAndActorsNames.txt"},
@@ -91,7 +92,7 @@
     "counter":"(^|%sep)(?<counterValue>[0-9]{2,3})(%sep|:|$)",
     "lowercaseChar":"[a-z]",
     "endingUppercaseWord":"%sep[A-Z]{3,}$",
-
+    "wordChar":"[[:word:]]",
 
 
     "patternsThatAreCaseSensitive":[
