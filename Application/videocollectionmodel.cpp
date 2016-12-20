@@ -7,6 +7,7 @@
 #include <QApplication>
 #include <QElapsedTimer>
 #include <QTimer>
+#include "profiler.h"
 
 void VideoCollectionModel::listRecursively(QString folder, QFileInfoList &videoList) {
     QFileInfoList list = QDir(folder).entryInfoList(QDir::AllEntries | QDir::NoDotAndDotDot);
@@ -69,138 +70,83 @@ void VideoCollectionModel::browseFolders() {
     }
     for (int i = 0; i < videoList.size(); i++) {
         QString path = videoList.at(i).absoluteFilePath();
-        VideoFile *mf = new VideoFile(path,i);
+        VideoFile *vf = new VideoFile(path);
         browsedDirsAndFiles++;
-        moviefiles.append(mf);
-        connect(mf,SIGNAL(hasChanged(int)),this,SLOT(rowChanged(int)));
+        videoFiles.append(vf);
+        connect(vf,SIGNAL(hasChanged(ModelNode*)),this,SLOT(rowChanged(ModelNode*)));
         QApplication::processEvents();
     }
     pt.stop();
     browseProgress.hide();
     endResetModel();
     resetOnGoing = false;
-    qWarning() << QString("Took %1.%2s to browse all files").arg(t.elapsed()/1000).arg((qint64)(t.elapsed()%1000),3,10,QLatin1Char('0'));
+    qWarning() << QString("Took %1.%2s to browse all %3 files and folders")
+                  .arg(t.elapsed()/1000)
+                  .arg((qint64)(t.elapsed()%1000),3,10,QLatin1Char('0'))
+                  .arg(browsedDirsAndFiles);
 }
 
 
 int VideoCollectionModel::rowCount(const QModelIndex & parent) const {
-    return moviefiles.size();
+    ModelNode * node;
+    if (parent.isValid()) {
+        node = (ModelNode *) parent.internalPointer();
+    } else {
+        node = ModelNode::topLevelNode();
+    }
+    return node->nbChildren();
 }
 int VideoCollectionModel::columnCount(const QModelIndex & parent) const {
-    return nbColumns + additionalColumns.size();
+    return nbColumns;
 }
 
+QModelIndex VideoCollectionModel::index(int row, int column, const QModelIndex &parent) const {
+    ModelNode * node;
+    if (parent.isValid()) {
+        node = (ModelNode *) parent.internalPointer();
+    } else {
+        node = ModelNode::topLevelNode();
+    }
+    return createIndex(row, column, node->childAt(row));
+}
+
+QModelIndex VideoCollectionModel::parent(const QModelIndex &index) const {
+    if (index.isValid() && index.column() == 0) {
+        ModelNode *node = (ModelNode *) index.internalPointer();
+        ModelNode *parent = node->getParentNode();
+        if (parent != NULL) {
+            return createIndex(parent->getPositionAmongSiblings(), index.column(), parent);
+        }
+    }
+    return QModelIndex();
+}
+
+
 QVariant VideoCollectionModel::data(const QModelIndex & index, int role) const {
-    VideoFile *mf = moviefiles[index.row()];
+    ModelNode *node = (ModelNode*)index.internalPointer();
     switch (role) {
     case Qt::DisplayRole:
         switch (index.column()) {
-        case colID:
-            if (mf->getVideo()!=NULL) {
-                return mf->getVideo()->id;
-            } else {
-                return "";
-            }
-        case colTitle:
-            return mf->getTitle();
-        case colYear:
-            return mf->year;
-        case colPath:
-            return mf->fileInfo.absoluteFilePath();
-        default:
-            if (index.column() >= nbColumns) {
-                Video *movie = mf->getVideo();
-                if (movie != NULL) {
-                    return movie->data[additionalColumns[index.column() - nbColumns]].toVariant();
-                }
-            }
+        case colTitle: return node->getTitle();
+        case colDate : return node->getDate();
+        case colPath : return node->getPath();
         }
         break;
     case htmlRole:
         switch (index.column()) {
-        case colPath:
-        {
-            QString filename = mf->fileInfo.absoluteFilePath();
-            QString richtext;
-            if (mf->titleSubString.size() > 0) {
-                filename = filename.replace(mf->titleSubString,"<span style=\" color:#03c010;\">"+mf->titleSubString+"</span>");
-            }
-            if (mf->year.size() > 0) {
-                filename = filename.replace(mf->year,"<span style=\" color:#2e0bd9;\">"+mf->year+"</span>");
-            }
-            richtext += filename;
-            ////qDebug() << richtext;
-            return richtext;
-        }
-        default:
-            if (index.column() >= nbColumns) {
-                QString text = data(index,Qt::DisplayRole).toString();
-                if (text.size() > 0) {
-                    QString columnTitle = headerData(index.column(),Qt::Horizontal).toString();
-                    if (columnTitle == "release_date" && text.size() > 4 && mf->year.size()>0) {
-                        int releaseYear = text.left(4).toInt();
-                        int fileYear = mf->year.toInt();
-                        int yearDistance = abs(releaseYear - fileYear);
-                        QString color;
-                        switch (yearDistance) {
-                        case 0: color = "2e0bd9"; break;
-                        case 1: color = "3399aa"; break;
-                        case 2: color = "f19855"; break;
-                        default: color = "ff1111";
-                        }
-                        return QString("<span style=\" color:#%1;\">%2</span>%3")
-                                .arg(color)
-                                .arg(text.left(4))
-                                .arg(text.mid(4));
-                    } else if (columnTitle == "title" || columnTitle == "original_title") {
-                        QString out;
-                        int wordStart = -1;
-                        bool matched = false;
-                        QRegularExpression regex = pattern()["wordChar"];
-                        regex.setPatternOptions(QRegularExpression::UseUnicodePropertiesOption);
-                        for (int i = 0; i < text.size()+1; i++) {
-                            QChar c;
-                            if (i < text.size()) {
-                                c = text[i];
-                            }
-                            if (i < text.size() && regex.match(c).hasMatch()) {
-                                if (wordStart == -1) {
-                                    wordStart = i;
-                                }
-                            } else {
-                                if (wordStart != -1) {
-                                    QString word = text.mid(wordStart,i-wordStart);
-                                    QRegularExpression wordRegexp = QRegularExpression("(^|[^a-z0-9])" +
-                                                                                       QRegularExpression::escape(word) +
-                                                                                       "($|[^a-z0-9])",
-                                                                                       QRegularExpression::CaseInsensitiveOption);
-                                    if (wordRegexp.match(mf->titleSubString).hasMatch()) {
-                                        out.append("<span style=\" color:#2e0bd9;\">" + word + "</span>");
-                                        matched = true;
-                                    } else if (wordRegexp.match(mf->fileInfo.absoluteFilePath()).hasMatch()) {
-                                        out.append("<span style=\" color:#3399aa;\">" + word + "</span>");
-                                        matched = true;
-                                    } else {
-                                        out.append(word);
-                                    }
-                                }
-                                if (i < text.size()) {
-                                    out.append(c);
-                                }
-                                wordStart = -1;
-                            }
-                        }
-                        if (matched) {
-                            return out;
-                        }
-                    }
-                }
-            }
+        case colTitle: return node->getHtmlTitle();
+        case colDate : return node->getHtmlDate();
+        case colPath : return node->getHtmlPath();
         }
         break;
+    case rawDataRole:
+        qDebug() << rawDataRole;
+        qDebug() << node->data.keys();
+        return node->data;
     }
     return QVariant();
 }
+
 QVariant VideoCollectionModel::headerData(int section, Qt::Orientation orientation, int role) const {
     if (orientation == Qt::Horizontal) {
         switch (role) {
@@ -208,48 +154,21 @@ QVariant VideoCollectionModel::headerData(int section, Qt::Orientation orientati
             switch (section) {
             case colTitle:
                 return "Title";
-            case colYear:
+            case colDate:
                 return "Year";
             case colPath:
                 return "Path";
-            case colID:
-                return "id";
-            default:
-                if (section >= nbColumns) {
-                    return additionalColumns[section-nbColumns];
-                }
             }
         }
     }
     return QVariant();
 }
 
-void VideoCollectionModel::rowChanged(int row) {
+void VideoCollectionModel::rowChanged(ModelNode *node) {
     //qDebug() << QString("rowChanged(%1)").arg(row);
-    Video *movie = moviefiles.at(row)->getVideo();
-    if (movie != NULL) {
-        QStringList keys = movie->data.keys();
-        //qDebug() << "keys: " << keys;
-        QStringList headersToAppend;
-        for (int i = 0; i < keys.size(); i++) {
-            QString key = keys.at(i);
-            if (!columnsSet.contains(key)) {
-                columnsSet.insert(key);
-                headersToAppend << key;
-            }
-        }
-        if (headersToAppend.size() > 0) {
-            //qDebug() << "inserting " << headersToAppend.size() << " columns";
-            if (!resetOnGoing)
-                beginInsertColumns(QModelIndex(),columnCount(),columnCount()+headersToAppend.size()-1);
-            additionalColumns << headersToAppend;
-            if (!resetOnGoing)
-                endInsertColumns();
-        }
-    }
-
+    int row = node->getPositionAmongSiblings();
     if (!resetOnGoing) {
-        emit dataChanged(createIndex(row,0),
-                         createIndex(row,columnCount()-1));
+        emit dataChanged(createIndex(row,0              ,node->getParentNode()),
+                         createIndex(row,columnCount()-1,node->getParentNode()));
     }
 }

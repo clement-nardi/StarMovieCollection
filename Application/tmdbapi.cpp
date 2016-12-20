@@ -67,6 +67,17 @@ TMDBQuery *TMDBQuery::newTvEpisodeQuery(int id, int season, int episode) {
                          .arg(episode));
 }
 
+TMDBQuery *TMDBQuery::newTvSeasonQuery(int id, int season) {
+    return new TMDBQuery(QString("/3/tv/%1/season/%2")
+                         .arg(id)
+                         .arg(season));
+}
+
+TMDBQuery *TMDBQuery::newTvShowQuery(int id) {
+    return new TMDBQuery(QString("/3/tv/%1")
+                         .arg(id));
+}
+
 void TMDBQuery::send(bool hasPriority) {
     QByteArray key = url.toEncoded();
     if (cache.contains(key)) {
@@ -126,7 +137,7 @@ void TMDBQuery::resetQueryCount() {
 void TMDBQuery::processQueue() {
     //qDebug() << "-->processQueue()";
     if (!waitTimer()->isActive()) {
-        //qDebug() << "   queue.size()=" << queue.size() << " sent/max=" << sentQueries << "/" << maxQueries;
+        qDebug() << "   queue.size()=" << queue.size() << " sent/max=" << sentQueries << "/" << maxQueries;
         while (sentQueries < maxQueries && !queue.isEmpty()) {
             QString key = queue.first();
             queue.removeFirst();

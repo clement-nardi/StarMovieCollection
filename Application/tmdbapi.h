@@ -20,6 +20,8 @@ class TMDBQuery: public QObject {
 public:
     static TMDBQuery * newSearchQuery(QString keywords, int page = 1);
     static TMDBQuery * newMovieQuery(int movieID);
+    static TMDBQuery * newTvShowQuery(int id);
+    static TMDBQuery * newTvSeasonQuery(int id, int season);
     static TMDBQuery * newTvEpisodeQuery(int id, int season, int episode);
     void send(bool hasPriority = false);
     static float getCacheHitRatio();

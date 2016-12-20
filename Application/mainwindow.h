@@ -3,6 +3,8 @@
 
 #include <QMainWindow>
 #include "videocollectionmodel.h"
+#include <QMenu>
+#include <QAction>
 
 namespace Ui {
 class MainWindow;
@@ -18,9 +20,14 @@ public:
 
 private slots:
     void rearangeColumns();
+    void showContextMenu(QPoint);
+    void showRawData();
 private:
     Ui::MainWindow *ui;
     VideoCollectionModel *movieModel;
+
+    QMenu contextMenu;
+    QAction showRawDataAction;
 };
 
 #endif // MAINWINDOW_H

@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include <QApplication>
 #include <qdebug.h>
+#include <QElapsedTimer>
 
 static bool debugMode = false;
 
@@ -53,6 +54,12 @@ int main(int argc, char *argv[])
     w.show();
 
     movieModel->browseFolders();
+
+    QFile file("tree.txt");
+    file.open(QIODevice::WriteOnly);
+    QTextStream stream(&file);
+
+    ModelNode::topLevelNode()->PrintTo(stream);
 
     return a.exec();
 }

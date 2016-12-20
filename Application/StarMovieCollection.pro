@@ -20,20 +20,30 @@ SOURCES += main.cpp\
     videocollectionmodel.cpp \
     videocollectiondelegate.cpp \
     videofile.cpp \
-    video.cpp \
     romanconverter.cpp \
-    patterns.cpp
+    patterns.cpp \
+    profiler.cpp \
+    modelnode.cpp \
+    movie.cpp \
+    tvepisode.cpp \
+    tvseason.cpp \
+    tvshow.cpp
 
 
 HEADERS  += mainwindow.h \
     tmdbapi.h \
     persistentcache.h \
-    video.h \
     videocollectiondelegate.h \
     videocollectionmodel.h \
     videofile.h \
     romanconverter.h \
-    patterns.h
+    patterns.h \
+    profiler.h \
+    modelnode.h \
+    movie.h \
+    tvepisode.h \
+    tvseason.h \
+    tvshow.h
 
 FORMS    += mainwindow.ui
 

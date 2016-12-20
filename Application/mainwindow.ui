@@ -16,11 +16,7 @@
   <widget class="QWidget" name="centralWidget">
    <layout class="QVBoxLayout" name="verticalLayout_2">
     <item>
-     <widget class="QTableView" name="movieCollectionTable">
-      <attribute name="horizontalHeaderStretchLastSection">
-       <bool>true</bool>
-      </attribute>
-     </widget>
+     <widget class="QTreeView" name="movieCollectionTable"/>
     </item>
    </layout>
   </widget>

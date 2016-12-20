@@ -2,22 +2,22 @@
 #define MOVIECOLLECTIONMODEL_H
 
 #include <QObject>
-#include <QAbstractTableModel>
+#include <QAbstractItemModel>
 #include <QProgressDialog>
 #include <QSet>
 #include "videofile.h"
 
 enum Columns {
-    colID,
     colTitle,
-    colYear,
+    colDate,
     colPath,
     nbColumns
 };
 const int htmlRole = 31;
+const int rawDataRole = 32;
 
 
-class VideoCollectionModel : public QAbstractTableModel {
+class VideoCollectionModel : public QAbstractItemModel {
     Q_OBJECT
 public:
     VideoCollectionModel();
@@ -25,11 +25,12 @@ public:
     int columnCount(const QModelIndex & parent = QModelIndex()) const;
     QVariant data(const QModelIndex & index, int role = Qt::DisplayRole) const;
     QVariant headerData(int section, Qt::Orientation orientation, int role = Qt::DisplayRole) const;
-
+    QModelIndex index(int row, int column, const QModelIndex &parent = QModelIndex()) const;
+    QModelIndex parent(const QModelIndex &index) const;
     void browseFolders();
 private:
     QStringList movieFolders;
-    QList<VideoFile*> moviefiles;
+    QList<VideoFile*> videoFiles;
 
     QStringList additionalColumns;
     QSet<QString> columnsSet;
@@ -40,7 +41,7 @@ private:
     QProgressDialog browseProgress;
     void listRecursively(QString folder, QFileInfoList &videoList);
 private slots:
-    void rowChanged(int row);
+    void rowChanged(ModelNode *node);
     void updateProgressBar();
 };
 

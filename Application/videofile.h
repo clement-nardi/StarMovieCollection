@@ -4,7 +4,7 @@
 #include <QObject>
 #include <QFileInfo>
 #include <QJsonDocument>
-#include "video.h"
+#include "modelnode.h"
 
 static QStringList videoExtensions = QString("3g2,3gp,amv,asf,avi,drc,f4a,f4b,f4p,f4v,flv,gif,gifv,m1v,m2t,m2ts,m2v,m4p,m4v,mkv,mng,mod,mov,mp2,mp2v,mp4,mpe,mpeg,mpg,mpv,mpv2,mts,mxf,nsv,ogg,ogv,qt,rm,rmvb,roq,svi,ts,tts,vob,webm,wm,wmv,yuv").split(",");
 /**
@@ -13,17 +13,17 @@ static QStringList videoExtensions = QString("3g2,3gp,amv,asf,avi,drc,f4a,f4b,f4
  * or mkv/mp4/avi meta-data (audio/subtitle streams details, duration, etc.)
  * Some information can be guessed from the name of the file or the name of the enclosing folders.
  */
-class VideoFile : public QObject
+class VideoFile : public ModelNode
 {
     Q_OBJECT
 public:
-    explicit VideoFile(QString path, int row_, bool searchDataNow = true, QObject *parent = 0);
+    explicit VideoFile(QString path, bool searchDataNow = true);
 
     QFileInfo fileInfo;
-    QString getTitle();
-    QString year;
-    Video *getVideo();
-    int row;
+    QString getTitleText();
+    QString getDate();
+    QString getPath();
+    QString getHtmlPath();
 
     static bool isVideoFile(QString filename);
 
@@ -33,10 +33,8 @@ public:
     int seasonNumber;
     int episodeNumber;
 
-signals:
-    void hasChanged(int);
-
 private:
+    QString year;
     void extractYear();
 
     //extracts titleSubString and isTvEpisode
@@ -45,7 +43,6 @@ private:
     void extractSeasonEpisodeFromFilename();
 
     QString extractTitle(QString filename);
-    Video *video;
     bool searchQuerySent;
 
     int getLastYearOffset(QString s);
@@ -53,8 +50,7 @@ private:
     void extractSeasonEpisodeFromMatch(const QRegularExpressionMatch &match);
     void findCounterInFilename(QFileInfo fi, QString &counter, int &nbCharsToTrim);
 private slots:
-    void handleSearchResults(QJsonDocument doc);
-    void movieHasChanged();
+    void handleResults(QJsonDocument doc);
 };
 
 #endif // MOVIEFILE_H

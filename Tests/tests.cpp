@@ -120,7 +120,7 @@ void Tests::testExtractTitle(){
     }
 
     for (int i = 0; i < failedPaths.size(); i++) {
-        qDebug() << "Actual   :" << VideoFile(failedPaths[i],0,false).titleSubString;
+        qDebug() << "Actual   :" << VideoFile(failedPaths[i],false).titleSubString;
         qDebug() << "Expected :" << expectedTitles[i];
     }
 
@@ -146,7 +146,7 @@ void Tests::testExtractSeasonEpisode() {
         int seasonNumber = stream.readLine().toInt();
         int episodeNumber = stream.readLine().toInt();
         countPaths++;
-        VideoFile v(path,0,false);
+        VideoFile v(path,false);
         //qDebug() << path;
         if (v.seasonNumber == seasonNumber && v.episodeNumber == episodeNumber) {
             countMatches++;
@@ -158,7 +158,7 @@ void Tests::testExtractSeasonEpisode() {
     }
 
     for (int i = 0; i < failedPaths.size(); i++) {
-        VideoFile v(failedPaths[i],0,false);
+        VideoFile v(failedPaths[i],false);
         qDebug() << "Actual   : season " << v.seasonNumber << " episode " << v.episodeNumber;
         qDebug() << "Expected : season " << expectedSeason[i] << " episode " << expectedEpisode[i];
     }

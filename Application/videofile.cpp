@@ -9,33 +9,57 @@
 #include <QDir>
 #include <QStringListIterator>
 #include "tmdbapi.h"
-#include "video.h"
+#include "movie.h"
+#include "tvepisode.h"
 #include "romanconverter.h"
 #include "patterns.h"
+#include "profiler.h"
 
-VideoFile::VideoFile(QString path, int row_, bool searchDataNow, QObject *parent) : QObject(parent) {
-    video = NULL;
+VideoFile::VideoFile(QString path, bool searchDataNow) : ModelNode() {
+    //qDebug() << QString("new VideoFile(%1,%2)").arg(path).arg(searchDataNow);
     seasonNumber = 0;
     episodeNumber = 0;
     searchQuerySent = false;
-    row = row_;
     fileInfo = QFileInfo(path);
+    profiler()->funcBegin("extracts");
     extractYear();
     extractInfoFromFilename();
     extractSeasonEpisodeFromFilename();
+    profiler()->funcEnd("extracts");
 
+    //qDebug() << getParentNode();
     if (searchDataNow) {
-        TMDBQuery *tmdbquery = TMDBQuery::newSearchQuery(getTitle());
-        connect(tmdbquery, SIGNAL(response(QJsonDocument)), this, SLOT(handleSearchResults(QJsonDocument)), Qt::QueuedConnection);
-        tmdbquery->send(false);
+        setTMDBQuery(TMDBQuery::newSearchQuery(getTitleText()));
     }
 }
 
-
-QString VideoFile::getTitle() {
+QString VideoFile::getTitleText() {
     return QString(titleSubString).replace("."," ").replace("_"," ");
 }
 
+QString VideoFile::getDate() {
+    return year;
+}
+
+QString VideoFile::getPath() {
+    return fileInfo.absoluteFilePath();
+}
+
+QString VideoFile::getHtmlPath(){
+    profiler()->funcBegin("colorify path");
+    QString filename = getPath();
+    QString richtext;
+    if (titleSubString.size() > 0) {
+        filename = filename.replace(titleSubString,"<span style=\" color:#03c010;\">"+titleSubString+"</span>");
+    }
+    if (getDate().size() > 0) {
+        filename = filename.replace(getDate(),"<span style=\" color:#2e0bd9;\">"+getDate()+"</span>");
+    }
+    richtext += filename;
+    ////qDebug() << richtext;
+    profiler()->funcEnd("colorify path");
+    return richtext;
+}
 
 void VideoFile::extractSeasonEpisodeFromMatch(const QRegularExpressionMatch &match) {
     if (match.hasMatch()) {
@@ -318,24 +342,15 @@ int VideoFile::getLastYearOffset(QString s) {
     return offset;
 }
 
-Video *VideoFile::getVideo() {
-    if (video != NULL) {
-        return video;
-    } else {
-        if (!searchQuerySent) {
-            searchQuerySent = true;
-            TMDBQuery *tmdbquery = TMDBQuery::newSearchQuery(getTitle());
-            connect(tmdbquery, SIGNAL(response(QJsonDocument)), this, SLOT(handleSearchResults(QJsonDocument)), Qt::QueuedConnection);
-            tmdbquery->send(true);
-        }
-    }
-    return NULL;
-}
-
-void VideoFile::handleSearchResults(QJsonDocument doc) {
+void VideoFile::handleResults(QJsonDocument doc) {
     //qDebug() << "handleSearchResults(doc)";
-    searchQuerySent = false;
-    QJsonValue results = doc.object()["results"];
+
+    delete tmdbQuery;
+    tmdbQuery = NULL;
+
+    data = doc.object();
+
+    QJsonValue results = data["results"];
     if (results.isArray()) {
         QJsonArray array = results.toArray();
         if (array.size() > 0) {
@@ -396,13 +411,9 @@ void VideoFile::handleSearchResults(QJsonDocument doc) {
             //qDebug() << "MovieID=" << movieID;
             if (id >= 0) {
                 if (type == "movie") {
-                    video = Video::getMovie(id);
+                    setParentNode(Movie::getMovie(id));
                 } else if (type == "tv") {
-                    video = Video::getTVEpisode(id,seasonNumber,episodeNumber);
-                }
-                if (video != NULL) {
-                    emit hasChanged(row);
-                    connect(video, SIGNAL(hasChanged()), this, SLOT(movieHasChanged()));
+                    setParentNode(TVEpisode::getTVEpisode(id,seasonNumber,episodeNumber));
                 }
             }
         } else {
@@ -415,10 +426,4 @@ void VideoFile::handleSearchResults(QJsonDocument doc) {
 
 bool VideoFile::isVideoFile(QString filename) {
     return videoExtensions.contains(filename.split('.').last(), Qt::CaseInsensitive);
-}
-
-void VideoFile::movieHasChanged() {
-    //qDebug() << "movieHasChanged()";
-    //qDebug() << QString("emit hasChanged(%1)").arg(row);
-    emit hasChanged(row);
 }
